@@ -3,14 +3,10 @@ import authors from './queries/authorsQ';
 import blogs from './queries/blogsQ';
 import blogTags from './queries/blogTagsQ';
 import tags from './queries/tagsQ';
+import tokens from './queries/tokensQ';
+import config from '../config'
 
-export const pool = mysql.createPool({
-    host: 'localhost',
-    port: 3306,
-    user: 'blogsfullstack',
-    password: 'Reaganxbruce123',
-    database: 'blogsfullstack'
-})
+export const pool = mysql.createPool(config.mysql)
 
 export const Query = <T = any>(query: string, values?: any) => {
     return new Promise<T>((resolve, reject) => {
@@ -34,7 +30,8 @@ export default {
     authors,
     blogs,
     blogTags,
-    tags
+    tags,
+    tokens,
 }
 
 
